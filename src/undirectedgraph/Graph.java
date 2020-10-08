@@ -134,6 +134,17 @@ public class Graph {
 		return n;
 	}
 
+	public Node searchSolution(String initLabel, String goalLabel, Algorithms algID, String provinceLabel)
+	{
+		State init = new State(this.getVertice(initLabel));
+		State goal = new State(this.getVertice(goalLabel));
+		Graph gr = new Graph();
+
+		// para acabar domingo
+		Node n = null;
+		return n;
+	}
+
 	public void showSolution(Node n) {
 		System.out.println("******************* SOLUTION ********************");
 		System.out.println("Node Expansions: " + this.expansions);
