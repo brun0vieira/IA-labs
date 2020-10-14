@@ -10,13 +10,13 @@ public class Main {
     public static void main(String[] args) {
         Graph graph = Romenia.defineGraph();
         Node n;
-        String[] regions = new String[]{"Dobrogea"}; // regioes intermedias
+        //String[] regions = new String[]{"Dobrogea","Banat"}; // regioes intermedias
         //graph.showLinks();
         //graph.showSets();
         //n = graph.searchSolution("Arad", "Bucharest", Algorithms.BreadthFirstSearch);
         //graph.showSolution(n);
 
-        n = graph.searchSolution("Arad", "Bucharest", Algorithms.AStarSearch, regions);
+        n = graph.searchSolution("Arad", "Bucharest", Algorithms.AStarSearch, "Dobrogea");
         graph.showSolution(n);
     }
 }

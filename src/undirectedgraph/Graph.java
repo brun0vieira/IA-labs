@@ -134,6 +134,34 @@ public class Graph {
 		return n;
 	}
 
+	public Node searchSolution(String initLabel, String goalLabel, Algorithms algID, String region)
+	{
+		Node node_init_reg, node_reg_goal,solution = null;
+		Graph g = new Graph();
+		Vertex init_city = this.getVertice(initLabel);
+		Vertex goal_city = this.getVertice(goalLabel);
+		Vertex v;
+		g.addVertice(initLabel, init_city.getLatitude(), init_city.getLongitude());
+		g.addVertice(goalLabel, goal_city.getLatitude(), goal_city.getLongitude());
+
+		VertexSet vertex_set = this.getVerticeSet(region);
+		HashSet<Vertex> region_cities = vertex_set.getVertices();
+		Iterator<Vertex> it = region_cities.iterator();
+
+		while (it.hasNext()) {
+			v = it.next();
+			g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
+			node_init_reg = this.searchSolution(initLabel, v.getLabel(), algID);
+			node_reg_goal = this.searchSolution(v.getLabel(), goalLabel, algID);
+			g.addEdge(initLabel, v.getLabel(), node_init_reg.getPathCost());
+			g.addEdge(v.getLabel(), goalLabel, node_reg_goal.getPathCost());
+		}
+
+		g.showLinks();
+		solution = g.searchSolution(initLabel, goalLabel, algID);
+		return solution;
+	}
+	// a alterar
 	public Node searchSolution(String initLabel, String goalLabel, Algorithms algID, String[] region)
 	{
 		Node node_init_reg, node_reg_goal,solution = null;
@@ -146,19 +174,20 @@ public class Graph {
 
 		for (int i = 0; i < region.length; i++) {
 
-				VertexSet vertex_set = this.getVerticeSet(region[i]);
-				HashSet<Vertex> region_cities = vertex_set.getVertices();
-				Iterator<Vertex> it = region_cities.iterator();
+			VertexSet vertex_set = this.getVerticeSet(region[i]);
+			HashSet<Vertex> region_cities = vertex_set.getVertices();
+			Iterator<Vertex> it = region_cities.iterator();
 
-				while (it.hasNext()) {
-					v = it.next();
-					g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
-					node_init_reg = this.searchSolution(initLabel, v.getLabel(), algID);
-					node_reg_goal = this.searchSolution(v.getLabel(), goalLabel, algID);
-					g.addEdge(initLabel, v.getLabel(), node_init_reg.getPathCost());
-					g.addEdge(v.getLabel(), goalLabel, node_reg_goal.getPathCost());
-				}
+			while (it.hasNext()) {
+				v = it.next();
+				g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
+				node_init_reg = this.searchSolution(initLabel, v.getLabel(), algID);
+				node_reg_goal = this.searchSolution(v.getLabel(), goalLabel, algID);
+				g.addEdge(initLabel, v.getLabel(), node_init_reg.getPathCost());
+				g.addEdge(v.getLabel(), goalLabel, node_reg_goal.getPathCost());
+			}
 		}
+		g.showLinks();
 		solution = g.searchSolution(initLabel, goalLabel, algID);
 		return solution;
 	}
