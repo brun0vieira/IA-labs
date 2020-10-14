@@ -9,14 +9,14 @@ public class Main {
 
     public static void main(String[] args) {
         Graph graph = Romenia.defineGraph();
-        graph.showLinks();
-        graph.showSets();
-        /*Node n;
-        n = graph.searchSolution("Arad", "Bucharest", Algorithms.BreadthFirstSearch, "Oltenia");
-        graph.showSolution(n);
-        */
-        String[] regions = new String[]{"Dobrogea"};
-        graph.searchSolution("Arad", "Bucharest", Algorithms.BreadthFirstSearch, regions);
+        Node n;
+        String[] regions = new String[]{"Dobrogea"}; // regioes intermedias
+        //graph.showLinks();
+        //graph.showSets();
+        //n = graph.searchSolution("Arad", "Bucharest", Algorithms.BreadthFirstSearch);
+        //graph.showSolution(n);
 
+        n = graph.searchSolution("Arad", "Bucharest", Algorithms.AStarSearch, regions);
+        graph.showSolution(n);
     }
 }

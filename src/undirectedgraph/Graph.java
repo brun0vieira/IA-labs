@@ -140,10 +140,9 @@ public class Graph {
 		Graph g = new Graph();
 		Vertex init_city = this.getVertice(initLabel);
 		Vertex goal_city = this.getVertice(goalLabel);
+		Vertex v;
 		g.addVertice(initLabel, init_city.getLatitude(), init_city.getLongitude());
 		g.addVertice(goalLabel, goal_city.getLatitude(), goal_city.getLongitude());
-
-		Vertex v;
 
 		for (int i = 0; i < region.length; i++) {
 
@@ -158,12 +157,9 @@ public class Graph {
 					node_reg_goal = this.searchSolution(v.getLabel(), goalLabel, algID);
 					g.addEdge(initLabel, v.getLabel(), node_init_reg.getPathCost());
 					g.addEdge(v.getLabel(), goalLabel, node_reg_goal.getPathCost());
-
 				}
-
-				g.showLinks();
-			}
-
+		}
+		solution = g.searchSolution(initLabel, goalLabel, algID);
 		return solution;
 	}
 
