@@ -134,15 +134,37 @@ public class Graph {
 		return n;
 	}
 
-	public Node searchSolution(String initLabel, String goalLabel, Algorithms algID, String provinceLabel)
+	public Node searchSolution(String initLabel, String goalLabel, Algorithms algID, String[] region)
 	{
-		State init = new State(this.getVertice(initLabel));
-		State goal = new State(this.getVertice(goalLabel));
-		Graph gr = new Graph();
+		Node node_init_reg, node_reg_goal,solution = null;
+		Graph g = new Graph();
+		Vertex init_city = this.getVertice(initLabel);
+		Vertex goal_city = this.getVertice(goalLabel);
+		g.addVertice(initLabel, init_city.getLatitude(), init_city.getLongitude());
+		g.addVertice(goalLabel, goal_city.getLatitude(), goal_city.getLongitude());
 
-		// para acabar domingo
-		Node n = null;
-		return n;
+		Vertex v;
+
+		for (int i = 0; i < region.length; i++) {
+
+				VertexSet vertex_set = this.getVerticeSet(region[i]);
+				HashSet<Vertex> region_cities = vertex_set.getVertices();
+				Iterator<Vertex> it = region_cities.iterator();
+
+				while (it.hasNext()) {
+					v = it.next();
+					g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
+					node_init_reg = this.searchSolution(initLabel, v.getLabel(), algID);
+					node_reg_goal = this.searchSolution(v.getLabel(), goalLabel, algID);
+					g.addEdge(initLabel, v.getLabel(), node_init_reg.getPathCost());
+					g.addEdge(v.getLabel(), goalLabel, node_reg_goal.getPathCost());
+
+				}
+
+				g.showLinks();
+			}
+
+		return solution;
 	}
 
 	public void showSolution(Node n) {
