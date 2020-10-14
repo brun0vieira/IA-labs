@@ -161,33 +161,53 @@ public class Graph {
 		solution = g.searchSolution(initLabel, goalLabel, algID);
 		return solution;
 	}
-	// a alterar
+
 	public Node searchSolution(String initLabel, String goalLabel, Algorithms algID, String[] region)
 	{
 		Node node_init_reg, node_reg_goal,solution = null;
 		Graph g = new Graph();
 		Vertex init_city = this.getVertice(initLabel);
 		Vertex goal_city = this.getVertice(goalLabel);
-		Vertex v;
+		Vertex v,ve;
 		g.addVertice(initLabel, init_city.getLatitude(), init_city.getLongitude());
 		g.addVertice(goalLabel, goal_city.getLatitude(), goal_city.getLongitude());
+		int j;
 
-		for (int i = 0; i < region.length; i++) {
+		for (int i = 0; i < region.length - 1; i++) {
 
 			VertexSet vertex_set = this.getVerticeSet(region[i]);
 			HashSet<Vertex> region_cities = vertex_set.getVertices();
 			Iterator<Vertex> it = region_cities.iterator();
+			g.addVerticeSet(vertex_set.getLabel());
 
 			while (it.hasNext()) {
 				v = it.next();
 				g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
+				g.addVerticeToSet(vertex_set.getLabel(),v.getLabel());
 				node_init_reg = this.searchSolution(initLabel, v.getLabel(), algID);
-				node_reg_goal = this.searchSolution(v.getLabel(), goalLabel, algID);
 				g.addEdge(initLabel, v.getLabel(), node_init_reg.getPathCost());
-				g.addEdge(v.getLabel(), goalLabel, node_reg_goal.getPathCost());
+
+				if(i+1 < region.length)
+				{
+					VertexSet vSet = this.getVerticeSet(region[i+1]);
+					HashSet<Vertex> cities = vSet.getVertices();
+					Iterator<Vertex> ite = cities.iterator();
+
+ 					while(ite.hasNext()){
+ 						ve = ite.next();
+ 						g.addVertice(ve.getLabel(),ve.getLatitude(),ve.getLongitude());
+						node_reg_goal = this.searchSolution(v.getLabel(), ve.getLabel(), algID);
+						g.addEdge(v.getLabel(), ve.getLabel(), node_reg_goal.getPathCost());
+						node_reg_goal = this.searchSolution(ve.getLabel(),goalLabel, algID);
+						g.addEdge(ve.getLabel(),goalLabel,node_reg_goal.getPathCost());
+					}
+				}
+
 			}
 		}
+		g.showSets();
 		g.showLinks();
+		//g.showLinks();
 		solution = g.searchSolution(initLabel, goalLabel, algID);
 		return solution;
 	}
