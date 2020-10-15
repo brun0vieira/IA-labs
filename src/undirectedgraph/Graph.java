@@ -164,51 +164,71 @@ public class Graph {
 
 	public Node searchSolution(String initLabel, String goalLabel, Algorithms algID, String[] region)
 	{
-		Node node_init_reg, node_reg_goal,solution = null;
+		Node node_init_reg, node_reg_reg, node_reg_goal,solution = null;
 		Graph g = new Graph();
 		Vertex init_city = this.getVertice(initLabel);
 		Vertex goal_city = this.getVertice(goalLabel);
-		Vertex v,ve,ver;
+		Vertex v, prev_v, v_togoal;
 		g.addVertice(initLabel, init_city.getLatitude(), init_city.getLongitude());
 		g.addVertice(goalLabel, goal_city.getLatitude(), goal_city.getLongitude());
 
-		for (int i = 0; i < region.length; i++) {
-
-			VertexSet vertex_set = this.getVerticeSet(region[i]);
-			HashSet<Vertex> region_cities = vertex_set.getVertices();
-			Iterator<Vertex> it = region_cities.iterator();
-			g.addVerticeSet(vertex_set.getLabel());
-
-			while (it.hasNext()) {
-				v = it.next();
-				g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
-				g.addVerticeToSet(vertex_set.getLabel(),v.getLabel());
-
-				// Só faz sentido criar uma ligação entre a cidade_inicial e uma cidade, se esta pertencer à regiao[0], visto que há uma ordem a cumprir
-				if(i == 0)
-				{
+		for (int i = 0; i < region.length ; i++) {
+			if(i == 0) {
+				VertexSet vertex_set = this.getVerticeSet(region[i]);
+				HashSet<Vertex> region_cities = vertex_set.getVertices();
+				Iterator<Vertex> it = region_cities.iterator();
+				g.addVerticeSet(vertex_set.getLabel());
+				while (it.hasNext()) {
+					v = it.next();
+					g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
+					g.addVerticeToSet(vertex_set.getLabel(),v.getLabel());
 					node_init_reg = this.searchSolution(initLabel, v.getLabel(), algID);
 					g.addEdge(initLabel, v.getLabel(), node_init_reg.getPathCost());
-				}
-
-				if(i+1 < region.length)
-				{
-					VertexSet vSet = this.getVerticeSet(region[i+1]);
-					HashSet<Vertex> cities = vSet.getVertices();
-					Iterator<Vertex> ite = cities.iterator();
-
- 					while(ite.hasNext()){
- 						ve = ite.next();
- 						g.addVertice(ve.getLabel(),ve.getLatitude(),ve.getLongitude());
-						g.addEdge(v.getLabel(), ve.getLabel());
-						g.addEdge(ve.getLabel(),goalLabel);
-					}
-				}
+				}				
 			}
+			else {
+
+				VertexSet prev_vertex_set = this.getVerticeSet(region[i-1]);
+				HashSet<Vertex> prev_region_cities = prev_vertex_set.getVertices();
+				VertexSet vertex_set = this.getVerticeSet(region[i]);
+				HashSet<Vertex> region_cities = vertex_set.getVertices();
+				g.addVerticeSet(vertex_set.getLabel());
+				
+				Iterator<Vertex> prev_it = prev_region_cities.iterator();
+				Iterator<Vertex> it = region_cities.iterator();
+				while(it.hasNext()) {
+					System.out.println("entrou");
+					v = it.next();
+					g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
+					g.addVerticeToSet(vertex_set.getLabel(),v.getLabel());	
+				}
+				while(prev_it.hasNext()) {
+					prev_v = prev_it.next();	
+					Iterator<Vertex> it_2 = region_cities.iterator();
+					while(it_2.hasNext()) {
+						v = it_2.next();
+						node_reg_reg = this.searchSolution(prev_v.getLabel(), v.getLabel(), algID);
+						System.out.println("%s"+prev_v.getLabel());
+						System.out.println("%s"+v.getLabel());
+						g.addEdge(prev_v.getLabel(), v.getLabel(), node_reg_reg.getPathCost());							
+					}
+				}			
+			}
+		}
+		VertexSet vertex_set_togoal = this.getVerticeSet(region[region.length-1]);
+		HashSet<Vertex> region_cities_togoal = vertex_set_togoal.getVertices();
+		Iterator<Vertex> it_togoal = region_cities_togoal.iterator();		
+		while(it_togoal.hasNext()) {
+			v_togoal = it_togoal.next();
+			
+			//g.addVertice(v_togoal.getLabel(), v_togoal.getLatitude(), v_togoal.getLongitude());
+			//g.addVerticeToSet(vertex_set_togoal.getLabel(),v_togoal.getLabel());
+			node_reg_goal = this.searchSolution(v_togoal.getLabel(), goalLabel, algID);
+			g.addEdge(v_togoal.getLabel(), goalLabel, node_reg_goal.getPathCost());		
 		}
 		g.showSets();
 		g.showLinks();
-
+		//g.showLinks();
 		solution = g.searchSolution(initLabel, goalLabel, algID);
 		return solution;
 	}
