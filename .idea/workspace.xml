@@ -2,54 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50fc3d0f-95df-4e3d-b8e9-078b0d338672" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IA-labs.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/com/company/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/AStarSearch$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/AStarSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/Algorithms.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/BreadthFirstSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/DepthFirstSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/GraphSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/GreedySearch$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/GreedySearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/SearchAlgorithm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/UniformCostSearch$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchalgorithm/UniformCostSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchproblem/Arc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchproblem/SearchProblem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/searchproblem/State.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/undirectedgraph/Edge.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/undirectedgraph/Graph$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/undirectedgraph/Graph.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/undirectedgraph/Romenia.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/undirectedgraph/Vertex.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA-labs/undirectedgraph/VertexSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/AStarSearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/Algorithms.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/BreadthFirstSearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/DepthFirstSearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/GraphSearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/GreedySearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/SearchAlgorithm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchalgorithm/UniformCostSearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchproblem/Arc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchproblem/SearchProblem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchproblem/State.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/undirectedgraph/Edge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/undirectedgraph/Graph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/undirectedgraph/Romenia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/undirectedgraph/Vertex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/undirectedgraph/VertexSet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +20,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -80,6 +34,14 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="766" y="300" width="424" height="520" key="FileChooserDialogImpl" timestamp="1603293529352">
+      <screen x="56" y="27" width="1864" height="1053" />
+    </state>
+    <state x="766" y="300" width="424" height="520" key="FileChooserDialogImpl/56.27.1864.1053@56.27.1864.1053" timestamp="1603293529352" />
+    <state x="898" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1603293941613">
+      <screen x="56" y="27" width="1864" height="1053" />
+    </state>
+    <state x="898" y="188" width="1022" height="737" key="SettingsEditor/56.27.1864.1053@56.27.1864.1053" timestamp="1603293941613" />
     <state x="713" y="445" width="540" height="223" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603293241369">
       <screen x="56" y="27" width="1864" height="1053" />
     </state>
