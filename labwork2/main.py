@@ -1,6 +1,6 @@
 from distanceMatrix import *
 
 if __name__ == '__main__':
-    fName = "teste"
+    fName = "matrix"
     m = readDistanceMatrix(fName)
-    print(getAllCities(m))
+    cria_solucao_inicial(m)

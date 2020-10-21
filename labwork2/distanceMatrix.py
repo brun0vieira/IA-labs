@@ -1,3 +1,5 @@
+import random
+
 # reads a distance matrix (composed of a list of cities and the matrix itself)
 # given file name fName
 def readDistanceMatrix(fName):
@@ -94,4 +96,21 @@ def getInitials(cityList):
         initials += city[0]
     return initials
 
-    
+def simulatedAnnealing():
+    corrente = [] # solucao atual
+    proximo = [] # solucao seguinte
+    melhor = [] # melhor solucao
+
+def cria_solucao_inicial(matrix):
+    cities = getAllCities(matrix)
+    path = []
+
+    while len(cities) != 0:
+        index = random.randint(0,len(cities)-1)
+        path.append(cities[index])
+        cities.pop(index)
+
+    first = path[0]
+    path.append(first)
+
+    print(path)
