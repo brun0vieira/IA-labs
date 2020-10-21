@@ -1,4 +1,6 @@
 import random
+import numpy as np
+import math
 
 # reads a distance matrix (composed of a list of cities and the matrix itself)
 # given file name fName
@@ -96,21 +98,55 @@ def getInitials(cityList):
         initials += city[0]
     return initials
 
-def simulatedAnnealing():
-    corrente = [] # solucao atual
-    proximo = [] # solucao seguinte
-    melhor = [] # melhor solucao
+def simulatedAnnealing(matrix):
+
+    t_inicial = temperatura_inicial(matrix)
+    corrente = cria_solucao_inicial(matrix)
+    melhor = corrente
+    # proximo
+
+
 
 def cria_solucao_inicial(matrix):
     cities = getAllCities(matrix)
     path = []
-
     while len(cities) != 0:
         index = random.randint(0,len(cities)-1)
         path.append(cities[index])
         cities.pop(index)
-
     first = path[0]
     path.append(first)
 
-    print(path)
+    return path
+
+# funcao que determina a temperatura inicial a partir do problema
+def temperatura_inicial(matrix):
+    max_distance = 0
+    min_distance = 500 # caso contrário, ficaria a zero
+    prob = 0.9
+    array = np.array(matrix[1])
+
+    for x in array:
+        for y in x:
+            distance = int(y)
+            if max_distance < distance:
+                max_distance = distance
+            if min_distance > distance:
+                min_distance = distance
+
+    delta_max = 2*max_distance - 2*min_distance
+    t_inicial = -delta_max/(math.log(prob))
+
+    return t_inicial
+
+# funcao de variacao do numero de iteracoes a cada temperatura
+def var_n_iter():
+    return 0
+
+# funcao que retorna true no caso de se ter atingido o criterio de paragem
+def criterio_de_paragem():
+    return 0
+
+# funcao de decaimento da temperatura
+def decaimento():
+    return 0
