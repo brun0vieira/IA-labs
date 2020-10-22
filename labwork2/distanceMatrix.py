@@ -105,8 +105,9 @@ def simulatedAnnealing(matrix):
     melhor = corrente
     # proximo
 
+    # n_iter é um valor arbitrário -> 10 000
 
-
+# funcao que cria uma solucao inicial de forma aleatória
 def cria_solucao_inicial(matrix):
     cities = getAllCities(matrix)
     path = []
@@ -114,8 +115,6 @@ def cria_solucao_inicial(matrix):
         index = random.randint(0,len(cities)-1)
         path.append(cities[index])
         cities.pop(index)
-    first = path[0]
-    path.append(first)
 
     return path
 
@@ -140,13 +139,17 @@ def temperatura_inicial(matrix):
     return t_inicial
 
 # funcao de variacao do numero de iteracoes a cada temperatura
-def var_n_iter():
-    return 0
+def var_n_iter(n_iter):
+    beta = 1.1
+    n_iter *= beta
+    return n_iter
 
 # funcao que retorna true no caso de se ter atingido o criterio de paragem
 def criterio_de_paragem():
     return 0
 
 # funcao de decaimento da temperatura
-def decaimento():
-    return 0
+def decaimento(temperatura):
+    alpha = 0.8 # quanto mais alto mais lento é o arrefecimento
+    temperatura *= alpha
+    return temperatura
