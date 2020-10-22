@@ -169,5 +169,5 @@ def vizinho(solucao):
         diff = abs(secondIndex-firstIndex)
 
     vizinho.append(solucao[firstIndex])
-    vizinho.append(solucao[secondIndex]) 
+    vizinho.append(solucao[secondIndex])
     return vizinho
