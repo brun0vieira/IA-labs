@@ -168,4 +168,25 @@ def vizinho(solucao):
 
     vizinho.append(solucao[firstIndex])
     vizinho.append(solucao[secondIndex])
-    return vizinho
+
+    print('Solução inicial:  ', solucao) # a apagar
+    print('Vizinho:          ', vizinho) # a apagar
+
+    # swap positions
+    solucao[firstIndex], solucao[secondIndex] = vizinho[1], vizinho[0]
+    print('Troca as cidades: ', solucao)  # a apagar
+    nova_solucao = inverte_ligacoes(solucao,firstIndex,secondIndex)
+    print('Nova solução:     ', nova_solucao) # a apagar
+
+    return nova_solucao
+# Ao retirarmos as ligacoes (i,i+1) e (j,j+1) a unica forma admissivel de criar um outro circuito é ligando (i,j) e (i+1,j+1) e invertendo a direcao das ligacoes entre i+1 e j (vizinho)
+# Esta funcao serve para inverter as tais ligacoes
+def inverte_ligacoes(solucao, firstIndex, secondIndex):
+
+    i = firstIndex
+    j = secondIndex
+
+    if firstIndex - secondIndex > 0:
+        i, j = secondIndex, firstIndex
+    solucao[i+1:j] = solucao[j-1:i:-1]
+    return solucao

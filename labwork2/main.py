@@ -6,4 +6,4 @@ if __name__ == '__main__':
     #simulatedAnnealing(m)
     #print(cria_solucao_inicial(m))
     #print(temperatura_inicial(m))
-    print(vizinho(cria_solucao_inicial(m)))
+    vizinho(cria_solucao_inicial(m))
