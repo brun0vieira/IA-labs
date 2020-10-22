@@ -197,7 +197,7 @@ public class Graph {
 				Iterator<Vertex> prev_it = prev_region_cities.iterator();
 				Iterator<Vertex> it = region_cities.iterator();
 				while(it.hasNext()) {
-					System.out.println("entrou");
+					
 					v = it.next();
 					g.addVertice(v.getLabel(), v.getLatitude(), v.getLongitude());
 					g.addVerticeToSet(vertex_set.getLabel(),v.getLabel());	
@@ -208,8 +208,7 @@ public class Graph {
 					while(it_2.hasNext()) {
 						v = it_2.next();
 						node_reg_reg = this.searchSolution(prev_v.getLabel(), v.getLabel(), algID);
-						System.out.println("%s"+prev_v.getLabel());
-						System.out.println("%s"+v.getLabel());
+						
 						g.addEdge(prev_v.getLabel(), v.getLabel(), node_reg_reg.getPathCost());							
 					}
 				}			
