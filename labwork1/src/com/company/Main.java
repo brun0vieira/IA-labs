@@ -16,7 +16,8 @@ public class Main {
         //n = graph.searchSolution("Arad", "Bucharest", Algorithms.BreadthFirstSearch);
         //graph.showSolution(n);
 
-        n = graph.searchSolution("Sibiu", "Giurgiu", Algorithms.AStarSearch, regions);
+        n = graph.searchSolution("Sibiu", "Giurgiu", Algorithms.AStarSearch);
         graph.showSolution(n);
+        
     }
 }

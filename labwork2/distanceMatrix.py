@@ -153,3 +153,19 @@ def decaimento(temperatura):
     alpha = 0.8 # quanto mais alto mais lento é o arrefecimento
     temperatura *= alpha
     return temperatura
+
+# funcao que retorna um vizinho a partir de uma solucao
+def vizinho(solucao):
+    vizinho = []
+
+    firstIndex = random.randint(0, len(solucao)-1)
+    secondIndex = random.randint(0, len(solucao)-1)
+    diff = abs(secondIndex-firstIndex)
+    # we can't have consecutive or equal indexes
+    while diff==1 or diff==0: # diff=1 and diff=0 means, respectively, consecutive and equal indexes
+        secondIndex = random.randint(0,len(solucao)-1)
+        diff = abs(secondIndex-firstIndex)
+
+    vizinho.append(solucao[firstIndex])
+    vizinho.append(solucao[secondIndex]) 
+    return vizinho

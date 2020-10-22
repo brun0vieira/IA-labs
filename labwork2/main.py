@@ -4,6 +4,6 @@ if __name__ == '__main__':
     fName = "matrix"
     m = readDistanceMatrix(fName)
     #simulatedAnnealing(m)
-    print(cria_solucao_inicial(m))
-    print(temperatura_inicial(m))
-
+    #print(cria_solucao_inicial(m))
+    #print(temperatura_inicial(m))
+    print(vizinho(cria_solucao_inicial(m)))
