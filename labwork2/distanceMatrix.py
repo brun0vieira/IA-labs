@@ -145,8 +145,10 @@ def var_n_iter(n_iter):
     return n_iter
 
 # funcao que retorna true no caso de se ter atingido o criterio de paragem
-def criterio_de_paragem():
-    return 0
+def criterio_de_paragem(temperatura_inicial, temperatura_actual):
+    if temperatura  (temperatura_actual/temperatura_inicial) < 0.1 :
+        return true
+    return false
 
 # funcao de decaimento da temperatura
 def decaimento(temperatura):
