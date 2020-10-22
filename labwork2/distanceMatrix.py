@@ -99,13 +99,11 @@ def getInitials(cityList):
     return initials
 
 def simulatedAnnealing(matrix):
-
-    t_inicial = temperatura_inicial(matrix)
+    # n_iter é um valor arbitrário -> 10 000
     corrente = cria_solucao_inicial(matrix)
     melhor = corrente
-    # proximo
-
-    # n_iter é um valor arbitrário -> 10 000
+    t_inicial = temperatura_inicial(matrix)
+    n_iter = 10000
 
 # funcao que cria uma solucao inicial de forma aleatória
 def cria_solucao_inicial(matrix):
