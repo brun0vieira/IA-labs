@@ -98,13 +98,6 @@ def getInitials(cityList):
         initials += city[0]
     return initials
 
-def simulatedAnnealing(matrix):
-
-    t_inicial = temperatura_inicial(matrix)
-    corrente = cria_solucao_inicial(matrix)
-    melhor = corrente
-    # proximo
-
     # n_iter é um valor arbitrário -> 10 000
 
 # funcao que cria uma solucao inicial de forma aleatória
@@ -115,7 +108,7 @@ def cria_solucao_inicial(matrix):
         index = random.randint(0,len(cities)-1)
         path.append(cities[index])
         cities.pop(index)
-
+        
     return path
 
 # funcao que determina a temperatura inicial a partir do problema
@@ -155,3 +148,28 @@ def decaimento(temperatura):
     alpha = 0.8 # quanto mais alto mais lento é o arrefecimento
     temperatura *= alpha
     return temperatura
+
+def vizinho(path):
+    cities = getAllCities(path)
+    viz = []
+    
+    break_1, break_2 = random.randint(0, len(cities)-1)
+    while True:
+        break_2 = random.randint(0, len(cities)-1)
+        if break_1 != break_2 :
+          break
+    if(break_1 != 0) :
+     for i in range(0, break_1 - 1):
+        viz.append(cities[i])
+    for j in range(break_2, break_1):
+        viz.append(cities[j])
+    for k in range(break_2 + 1, len(cities)-1):
+        viz.append(cities[k])
+
+
+def simulatedAnnealing(matrix):
+
+    t_inicial = temperatura_inicial(matrix)
+    corrente = cria_solucao_inicial(matrix)
+    melhor = corrente
+    # proximo
