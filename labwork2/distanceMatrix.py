@@ -179,6 +179,7 @@ def vizinho(solucao):
     print('Nova solução:     ', nova_solucao) # a apagar
 
     return nova_solucao
+
 # Ao retirarmos as ligacoes (i,i+1) e (j,j+1) a unica forma admissivel de criar um outro circuito é ligando (i,j) e (i+1,j+1) e invertendo a direcao das ligacoes entre i+1 e j (vizinho)
 # Esta funcao serve para inverter as tais ligacoes
 def inverte_ligacoes(solucao, firstIndex, secondIndex):

@@ -1,9 +1,9 @@
 from distanceMatrix import *
 
-if __name__ == '__main__':
+def main():
     fName = "matrix"
     m = readDistanceMatrix(fName)
-    #simulatedAnnealing(m)
-    #print(cria_solucao_inicial(m))
-    #print(temperatura_inicial(m))
     vizinho(cria_solucao_inicial(m))
+
+if __name__ == '__main__':
+    main()
