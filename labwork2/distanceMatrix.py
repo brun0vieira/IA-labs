@@ -98,13 +98,6 @@ def getInitials(cityList):
         initials += city[0]
     return initials
 
-def simulatedAnnealing(matrix):
-    # n_iter é um valor arbitrário -> 10 000
-    corrente = cria_solucao_inicial(matrix)
-    melhor = corrente
-    t_inicial = temperatura_inicial(matrix)
-    n_iter = 10000
-
 # funcao que cria uma solucao inicial de forma aleatória
 def cria_solucao_inicial(matrix):
     cities = getAllCities(matrix)
@@ -169,14 +162,14 @@ def vizinho(solucao):
     vizinho.append(solucao[firstIndex])
     vizinho.append(solucao[secondIndex])
 
-    print('Solução inicial:  ', solucao) # a apagar
-    print('Vizinho:          ', vizinho) # a apagar
+    #print('Solução inicial:  ', solucao) # a apagar
+    #print('Vizinho:          ', vizinho) # a apagar
 
     # swap positions
     solucao[firstIndex], solucao[secondIndex] = vizinho[1], vizinho[0]
-    print('Troca as cidades: ', solucao)  # a apagar
+    #print('Troca as cidades: ', solucao)  # a apagar
     nova_solucao = inverte_ligacoes(solucao,firstIndex,secondIndex)
-    print('Nova solução:     ', nova_solucao) # a apagar
+    #print('Nova solução:     ', nova_solucao) # a apagar
 
     return nova_solucao
 
@@ -191,3 +184,45 @@ def inverte_ligacoes(solucao, firstIndex, secondIndex):
         i, j = secondIndex, firstIndex
     solucao[i+1:j] = solucao[j-1:i:-1]
     return solucao
+
+def pathDistances(clist, fname):
+    cost = 0
+    matrix = readDistanceMatrix(fname)
+    #for i, j in zip(matrix, matrix[1: ]):
+    for i in range(0, len(clist)-1):
+        if i == len(clist)-1 :
+            cost += distance(matrix, clist[i] , clist[0])
+        cost += distance(matrix, clist[i], clist[i+1])  
+    return cost
+
+def randomProb(t,d):
+    bool_list = [0, 1]
+    distribution = [1-math.exp(-d/t), math.exp(-d/t)]
+    random_number = random.choices(bool_list, distribution)
+    return random_number
+
+def simulatedAnnealing(matrix, fName):
+    # n_iter é um valor arbitrário -> 10 000
+    m = readDistanceMatrix(fName)
+    corrente = cria_solucao_inicial(m)
+    melhor = corrente
+    t_inicial = temperatura_inicial(m)
+    t = t_inicial
+    n_iter = 10000
+    print(t_inicial)
+    while 1:
+        for i in range (1, int(n_iter)):
+            proximo = vizinho(corrente)
+            d = pathDistances(proximo, fName) - pathDistances(melhor, fName)
+            if d < 0:
+                corrente = proximo
+                if pathDistances(corrente, fName) < pathDistances(melhor, fName):
+                    melhor = corrente
+            else:
+                if randomProb(t, d):
+                    corrente = proximo
+        if criterio_de_paragem(t_inicial, t):
+            return melhor
+        n_iter = var_n_iter(n_iter)  
+        t = decaimento(t)  
+        print(t)     
