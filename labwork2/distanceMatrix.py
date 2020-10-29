@@ -219,4 +219,4 @@ def simulatedAnnealing(matrix, fName):
             return melhor
         n_iter = var_n_iter(n_iter)  
         t = decaimento(t)  
-        print('Temperatura inicial :',t)
+        print('Temperatura atual :',t)
