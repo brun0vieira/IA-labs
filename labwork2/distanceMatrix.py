@@ -197,10 +197,9 @@ def randomProb(t,d):
 
 def simulatedAnnealing(matrix, fName):
     # n_iter é um valor arbitrário -> 10 000
-    m = readDistanceMatrix(fName)
-    corrente = cria_solucao_inicial(m)
+    corrente = cria_solucao_inicial(matrix)
     melhor = corrente
-    t_inicial = temperatura_inicial(m)
+    t_inicial = temperatura_inicial(matrix)
     t = t_inicial
     n_iter = 10000
     print(t_inicial)
@@ -220,3 +219,4 @@ def simulatedAnnealing(matrix, fName):
         n_iter = var_n_iter(n_iter)  
         t = decaimento(t)  
         print('Temperatura atual :',t)
+
