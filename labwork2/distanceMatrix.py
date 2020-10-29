@@ -162,14 +162,9 @@ def vizinho(solucao):
     vizinho.append(solucao[firstIndex])
     vizinho.append(solucao[secondIndex])
 
-    #print('Solução inicial:  ', solucao) # a apagar
-    #print('Vizinho:          ', vizinho) # a apagar
-
     # swap positions
     solucao[firstIndex], solucao[secondIndex] = vizinho[1], vizinho[0]
-    #print('Troca as cidades: ', solucao)  # a apagar
     nova_solucao = inverte_ligacoes(solucao,firstIndex,secondIndex)
-    #print('Nova solução:     ', nova_solucao) # a apagar
 
     return nova_solucao
 
@@ -188,7 +183,6 @@ def inverte_ligacoes(solucao, firstIndex, secondIndex):
 def pathDistances(clist, fname):
     cost = 0
     matrix = readDistanceMatrix(fname)
-    #for i, j in zip(matrix, matrix[1: ]):
     for i in range(0, len(clist)-1):
         if i == len(clist)-1 :
             cost += distance(matrix, clist[i] , clist[0])
@@ -225,4 +219,4 @@ def simulatedAnnealing(matrix, fName):
             return melhor
         n_iter = var_n_iter(n_iter)  
         t = decaimento(t)  
-        print(t)     
+        print('Temperatura inicial :',t)
