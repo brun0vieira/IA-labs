@@ -1,0 +1,15 @@
+
+equipa(a;b;c;d;e;f).
+grupo(1..2).
+
+in(X,Y) :- equipa(X),grupo(Y), not n_in(X,Y).
+n_in(X,Y) :- equipa(X),grupo(Y), not in(X,Y).
+
+{ in(X,Y) : grupo(Y) } == 1 :- equipa(X).
+{ in(X,Y) : equipa(X) } == 3 :- grupo(Y).
+
+:- in(X,Y), equipa(X), grupo(Y), X=a, Y=1.
+
+#show in/2.
+
+
