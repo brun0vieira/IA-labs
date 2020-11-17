@@ -10,6 +10,14 @@ n_in(X,Y) :- equipa(X),grupo(Y), not in(X,Y).
 
 :- in(X,Y), equipa(X), grupo(Y), X=a, Y=1.
 
+:- in(X,Y), in(Z,Y), grupo(Y), equipa(X), equipa(Z), X=a, Z=e.
+
+:- in(X,Y), in(Z,Y), grupo(Y), equipa(X), equipa(Z), X=e, Z=f.
+
+a :- in(X,Y), in(Z,Y), grupo(Y), equipa(X), equipa(Z), X=b, Z=c.
+
+:- not a. 
+
 #show in/2.
 
 
